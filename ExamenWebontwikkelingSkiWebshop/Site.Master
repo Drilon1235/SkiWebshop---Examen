@@ -5,12 +5,13 @@
 <html>
 <head runat="server">
     <title></title>
+    <link href="css/MyCss.css" rel="stylesheet" />
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    aaaaFETCHFETCH
-    BRANCHESSSSSSdd
     <form id="form1" runat="server">
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
