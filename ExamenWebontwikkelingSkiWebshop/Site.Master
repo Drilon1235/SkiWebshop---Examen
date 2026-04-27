@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="master.master.cs" Inherits="ExamenWebontwikkelingSkiWebshop.master" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="ExamenWebontwikkelingSkiWebshop.master" %>
 
 <!DOCTYPE html>
 
