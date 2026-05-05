@@ -85,6 +85,7 @@
     <Content Include="css\bootstrap.rtl.css" />
     <Content Include="css\bootstrap.rtl.min.css" />
     <Content Include="Default.aspx" />
+    <Content Include="DefaultAangemeld.aspx" />
     <Content Include="Huren.aspx" />
     <Content Include="images\no-image-available.png" />
     <Content Include="images\products\atomic-redster-c9-carbon-uni-m-shift.jpg" />
@@ -140,12 +141,26 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DefaultAangemeld.aspx.cs">
+      <DependentUpon>DefaultAangemeld.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DefaultAangemeld.aspx.designer.cs">
+      <DependentUpon>DefaultAangemeld.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Huren.aspx.cs">
       <DependentUpon>Huren.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Huren.aspx.designer.cs">
       <DependentUpon>Huren.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Private.master.cs">
+      <DependentUpon>Private.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Private.master.designer.cs">
+      <DependentUpon>Private.master</DependentUpon>
     </Compile>
     <Compile Include="Public.master.cs">
       <DependentUpon>Public.master</DependentUpon>
@@ -189,12 +204,19 @@
     <Content Include="js\bootstrap.min.js.map" />
     <None Include="packages.config" />
     <Content Include="Public.master" />
+    <Content Include="Private.master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebShopLogica\WebShopLogica.csproj">
+      <Project>{ec9d098c-6dd8-4485-82ea-320843e7e3ea}</Project>
+      <Name>WebShopLogica</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

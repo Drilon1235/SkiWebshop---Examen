@@ -4,27 +4,43 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebShopLogica.Objects;
+using System.Configuration;
+
 
 namespace WebShopLogica.Managers
 {
     public static class AanmeldenManager
     {
-        public static string Connectionstring { get; set; }
 
-        public static bool Aanmelden(string gebruikersnaam, string wachtwoord)
+        public static List<AanmeldenObject> ControleerGebruiker(AanmeldenObject gebruiker)
         {
-            using (SqlConnection connection = new SqlConnection(Connectionstring))
+            string constring = ConfigurationManager.ConnectionStrings["Skiverhuur"].ConnectionString;
+
+            List<AanmeldenObject> gebruikersLijst = new List<AanmeldenObject>();
+            using (SqlConnection connection = new SqlConnection(constring))
             {
                 connection.Open();
                 string query = "SELECT Gebruikersnaam, Wachtwoord FROM Gebruikers WHERE Gebruikersnaam = @gebruikersnaam AND Wachtwoord = @wachtwoord";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@gebruikersnaam", gebruikersnaam);
-                    command.Parameters.AddWithValue("@wachtwoord", wachtwoord);
-                    int count = (int)command.ExecuteScalar();
-                    return count > 0;
+                    command.Parameters.AddWithValue("@gebruikersnaam", gebruiker.Gebruikersnaam);
+                    command.Parameters.AddWithValue("@wachtwoord", gebruiker.Wachtwoord);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while(reader.Read())
+                        {
+                            AanmeldenObject gevondenGebruiker = new AanmeldenObject
+                            {
+                                Gebruikersnaam = reader["Gebruikersnaam"].ToString(),
+                                Wachtwoord = reader["Wachtwoord"].ToString()
+                            };
+                            gebruikersLijst.Add(gevondenGebruiker);
+                        }
+                    }
                 }
             }
+            return gebruikersLijst;
         }
     }
 }

@@ -10,7 +10,7 @@
         <asp:Label ID="Label2" runat="server" Text="Wachtwoord: "></asp:Label>
         <asp:TextBox ID="txtWachtwoord" runat="server" CssClass="form-control"></asp:TextBox>
 
-        <asp:Button ID="btnAanmelden" runat="server" Text="Aanmelden" CssClass="mt-2 mb-2 buttonversturen" />
+        <asp:Button ID="btnAanmelden" runat="server" Text="Aanmelden" CssClass="mt-2 mb-2 buttonversturen" OnClick="btnAanmelden_Click" />
 
     </div>
     

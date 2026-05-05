@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace WebShopLogica.Objects
 {
-    public static class AanmeldenObject
+    public  class AanmeldenObject
     {
-        public static string Gebruikersnaam { get; set; }
-        public static string Wachtwoord { get; set; }
+        public string Gebruikersnaam { get; set; }
+        public string Wachtwoord { get; set; }
     }
 }
