@@ -1,0 +1,40 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Public.master.cs" Inherits="ExamenWebontwikkelingSkiWebshop.Public" %>
+
+<asp:Content ID="Headcontent" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Maincontent" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <nav class="navbar navbar-expand-lg navigatiebarLINKS">
+        <div class="container-fluid">
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Verhuur
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="Huren.aspx">Alpineskiën</a>
+                                <a class="dropdown-item" href="Huren.aspx">LangLaufen</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="Aanmelden.aspx">Aanmelden</a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+
+    </nav>
+
+    <asp:ContentPlaceHolder ID="PublicContent" runat="server" />
+
+
+</asp:Content>

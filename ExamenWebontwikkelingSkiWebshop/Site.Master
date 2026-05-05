@@ -5,18 +5,34 @@
 <html>
 <head runat="server">
     <title></title>
-    <link href="css/MyCss.css" rel="stylesheet" />
     <script src="js/bootstrap.bundle.min.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/MyCss.css" rel="stylesheet" />
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>
-    </form>
+    <div class="container-fluid p-0" id="alles">
+        <header>
+            <div class="BigHeader">
+                <a href="Default.aspx">
+                    <img src="images/sv_logo.png" id="hoofdlogo" />
+                </a>
+                <h1 id="skiverhuur">Ski Verhuur</h1>
+            </div>
+        </header>
+
+        <form id="form1" runat="server">
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </form>
+        <footer>
+            &#169; 2026 Ski Verhuur - Talentenschool Turnhout
+        </footer>
+    </div>
+
 </body>
 </html>

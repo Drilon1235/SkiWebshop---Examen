@@ -1,2 +1,139 @@
-﻿body {
+﻿:root {
+    --mainkleur: #0042B8;
+    --achtergrondkleur: #f5f5f5;
+    --menubalk: #ffffff;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+
+/*SITE MASTER PAGINA*/
+.BigHeader {
+    background-color: var(--mainkleur);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10px;
+    color: white;
+}
+
+#alles {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+footer {
+    background-color: var(--mainkleur);
+    text-align: center;
+    color: white;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin: 0;
+}
+
+#hoofdlogo {
+    margin-right: 200px;
+}
+
+#skiverhuur {
+    font-size: 35px;
+}
+
+
+
+
+/*PUBLIC MASTER PAGINA*/
+
+.navigatiebarLINKS {
+    width: 100%;
+    background-color: var(--menubalk);
+    z-index: 10;
+}
+
+nav{
+   border-bottom: 1px solid var(--mainkleur); 
+}
+
+
+/*DEFAULT PAGINA*/
+.carousel {
+    width: 100%;
+}
+
+.slides {
+    display: flex;
+}
+
+.slide {
+    width: 100%;
+}
+
+.klikhieromTekst {
+    background-color: var(--mainkleur);
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding: 10px 260px;
+    margin: 0 auto;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.custom-caption {
+    bottom: 10%;
+}
+
+.langlaufentekst {
+    font-size: 25px;
+    font-weight: 500;
+}
+
+@media (max-width: 576px) {
+    .custom-caption {
+        left: 8%;
+        right: 8%;
+        bottom: 6%;
+    }
+
+    .klikhieromTekst {
+        padding: 8px 12px;
+        font-size: 14px;
+        line-height: 1.3;
+    }
+
+    .langlaufentekst {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .custom-caption {
+        display: none;
+    }
+}
+
+
+
+
+
+/*AANMELDEN PAGINA*/
+
+.form-control {
+    display: block;
+}
+
+.buttonversturen {
+    width: 100%;
+    border: none;
+    background-color: var(--mainkleur);
+    border-radius: 5px;
+    color: white;
+    padding: 5px 0;
 }

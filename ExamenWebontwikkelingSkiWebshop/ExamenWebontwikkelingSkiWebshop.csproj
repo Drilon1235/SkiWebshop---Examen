@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Aanmelden.aspx" />
     <Content Include="css\bootstrap-grid.css" />
     <Content Include="css\bootstrap-grid.min.css" />
     <Content Include="css\bootstrap-grid.rtl.css" />
@@ -84,6 +85,7 @@
     <Content Include="css\bootstrap.rtl.css" />
     <Content Include="css\bootstrap.rtl.min.css" />
     <Content Include="Default.aspx" />
+    <Content Include="Huren.aspx" />
     <Content Include="images\no-image-available.png" />
     <Content Include="images\products\atomic-redster-c9-carbon-uni-m-shift.jpg" />
     <Content Include="images\products\atomic-redster-c9-skintec.jpg" />
@@ -124,12 +126,33 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aanmelden.aspx.cs">
+      <DependentUpon>Aanmelden.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aanmelden.aspx.designer.cs">
+      <DependentUpon>Aanmelden.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Huren.aspx.cs">
+      <DependentUpon>Huren.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Huren.aspx.designer.cs">
+      <DependentUpon>Huren.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Public.master.cs">
+      <DependentUpon>Public.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Public.master.designer.cs">
+      <DependentUpon>Public.master</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -164,6 +187,7 @@
     <Content Include="js\bootstrap.js.map" />
     <Content Include="js\bootstrap.min.js.map" />
     <None Include="packages.config" />
+    <Content Include="Public.master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
