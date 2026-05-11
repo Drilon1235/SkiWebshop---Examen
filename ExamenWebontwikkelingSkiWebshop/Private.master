@@ -24,7 +24,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="Aanmelden.aspx">Afmelden</a>
+                        <a class="nav-link active" href="Afmelden.aspx" id="AfmeldenKnop">Afmelden</a>
                     </li>
 
                 </ul>

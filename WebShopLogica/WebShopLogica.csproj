@@ -45,7 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Managers\AanmeldenManager.cs" />
-    <Compile Include="Objects\AanmeldenObject.cs" />
+    <Compile Include="DataObjects\AanmeldenObject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -37,6 +37,7 @@ namespace ExamenWebontwikkelingSkiWebshop
 
             if (gebruikers.Count > 0)
             {
+                Session["Gebruiker"] = txtGebruikersnaam.Text;
                 Response.Redirect("DefaultAangemeld.aspx");
             }
             else

@@ -68,6 +68,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Aanmelden.aspx" />
+    <Content Include="Afmelden.aspx" />
+    <Content Include="BeheerMaten.aspx" />
+    <Content Include="BeheerMaterialen.aspx" />
+    <Content Include="BeheerMerken.aspx" />
     <Content Include="css\bootstrap-grid.css" />
     <Content Include="css\bootstrap-grid.min.css" />
     <Content Include="css\bootstrap-grid.rtl.css" />
@@ -133,6 +137,34 @@
     </Compile>
     <Compile Include="Aanmelden.aspx.designer.cs">
       <DependentUpon>Aanmelden.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Afmelden.aspx.cs">
+      <DependentUpon>Afmelden.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Afmelden.aspx.designer.cs">
+      <DependentUpon>Afmelden.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BeheerMaten.aspx.cs">
+      <DependentUpon>BeheerMaten.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BeheerMaten.aspx.designer.cs">
+      <DependentUpon>BeheerMaten.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BeheerMaterialen.aspx.cs">
+      <DependentUpon>BeheerMaterialen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BeheerMaterialen.aspx.designer.cs">
+      <DependentUpon>BeheerMaterialen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BeheerMerken.aspx.cs">
+      <DependentUpon>BeheerMerken.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BeheerMerken.aspx.designer.cs">
+      <DependentUpon>BeheerMerken.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
