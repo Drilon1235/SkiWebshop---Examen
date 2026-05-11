@@ -15,9 +15,6 @@ body {
 /*SITE MASTER PAGINA*/
 .BigHeader {
     background-color: var(--mainkleur);
-/*    display: flex;
-*//*    align-items: center;
-    justify-content: space-evenly;*/
     padding: 20px;
     color: white;
 }
@@ -42,7 +39,7 @@ footer {
     justify-content: center;
     margin-left: 100px;
 }
-/*zzzzz*/
+
 #skiverhuur {
     display: flex;
     justify-content: center;
@@ -139,4 +136,34 @@ nav{
     border-radius: 5px;
     color: white;
     padding: 5px 0;
+}
+
+
+/*HUREN PAGINA*/
+
+.labelTitel {
+    color: var(--mainkleur);
+    font-size: 29px;
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.HurenAlles {
+    background-color: var(--achtergrondkleur);
+}
+
+.buttonsHuren{
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttonHuren{
+    background-color: var(--mainkleur);
+    width: 33%;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 5px;
 }
