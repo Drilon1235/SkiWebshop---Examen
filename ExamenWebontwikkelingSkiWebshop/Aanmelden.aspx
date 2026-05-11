@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Public.master" AutoEventWireup="true" CodeBehind="Aanmelden.aspx.cs" Inherits="ExamenWebontwikkelingSkiWebshop.Aanmelden" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="PublicContent" runat="server">
     <div class="container">
-        <h1 class="mb-2 mt-2">Aanmelden</h1>
+        <h1 class="mb-2 mt-2 titelBold">Aanmelden</h1>
 
         <div class="alert alert-danger" id="divFout" runat="server">
             <asp:Label ID="lblFoutboodschap" runat="server" Text=""></asp:Label>

@@ -17,7 +17,7 @@
 
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="BeheermMaten.aspx">Matenn</a>
+                                <a class="dropdown-item" href="BeheerMaten.aspx">Maten</a>
                                 <a class="dropdown-item" href="BeheerMerken.aspx">Merken</a>
                                 <a class="dropdown-item" href="BeheerMaterialen.aspx">Materialen</a>
                             </li>
