@@ -18,7 +18,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    padding: 10px;
+    padding: 20px;
     color: white;
 }
 
@@ -38,11 +38,12 @@ footer {
 }
 
 #hoofdlogo {
-    margin-right: 200px;
+    transform: translateX(-80px);
 }
 
 #skiverhuur {
-    font-size: 35px;
+    font-size: 40px;
+    margin-left: 300px;
 }
 
 

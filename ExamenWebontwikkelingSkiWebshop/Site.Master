@@ -16,7 +16,7 @@
     <div class="container-fluid p-0" id="alles">
         <header>
             <div class="BigHeader">
-                <a href="Default.aspx">
+                <a href="Default.aspx" class="hoofdlogo">
                     <img src="images/sv_logo.png" id="hoofdlogo" />
                 </a>
                 <h1 id="skiverhuur">Ski Verhuur</h1>

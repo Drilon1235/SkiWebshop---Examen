@@ -21,7 +21,7 @@ namespace WebShopLogica.Managers
             using (SqlConnection connection = new SqlConnection(constring))
             {
                 connection.Open();
-                string query = "SELECT Gebruikersnaam, Wachtwoord FROM Gebruikers WHERE Gebruikersnaam = @gebruikersnaam AND Wachtwoord = @wachtwoord";
+                string query = "SELECT Gebruikersnaam, Wachtwoord FROM Gebruiker WHERE Gebruikersnaam = @gebruikersnaam AND Wachtwoord = @wachtwoord";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@gebruikersnaam", gebruiker.Gebruikersnaam);

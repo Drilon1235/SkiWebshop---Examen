@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Configuration;
 using WebShopLogica.Managers;
 using WebShopLogica.Objects;
 
@@ -13,6 +14,13 @@ namespace ExamenWebontwikkelingSkiWebshop
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if (!IsPostBack)
+            {
+                divFout.Visible = false;
+            }
+
+
 
         }
 
@@ -27,9 +35,14 @@ namespace ExamenWebontwikkelingSkiWebshop
 
             List<AanmeldenObject> gebruikers = AanmeldenManager.ControleerGebruiker(gebruiker);
 
-            if (gebruikers.Count > 0) 
+            if (gebruikers.Count > 0)
             {
                 Response.Redirect("DefaultAangemeld.aspx");
+            }
+            else
+            {
+                lblFoutboodschap.Text = "Deze combinatie gebruikersnaam - wachtwoord is niet gekend.\n";
+                divFout.Visible = true;
             }
 
         }
