@@ -13,12 +13,13 @@
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Beheer
-                    </a>
+                        </a>
 
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="Huren.aspx">aaa</a>
-                                <a class="dropdown-item" href="Huren.aspx">LangLaufen</a>
+                                <a class="dropdown-item" href="BeheermMaten.aspx">Matenn</a>
+                                <a class="dropdown-item" href="BeheerMerken.aspx">Merken</a>
+                                <a class="dropdown-item" href="BeheerMaterialen.aspx">Materialen</a>
                             </li>
                         </ul>
                     </li>

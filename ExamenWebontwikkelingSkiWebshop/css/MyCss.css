@@ -15,9 +15,9 @@ body {
 /*SITE MASTER PAGINA*/
 .BigHeader {
     background-color: var(--mainkleur);
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+/*    display: flex;
+*//*    align-items: center;
+    justify-content: space-evenly;*/
     padding: 20px;
     color: white;
 }
@@ -37,13 +37,15 @@ footer {
     margin: 0;
 }
 
-#hoofdlogo {
-    transform: translateX(-80px);
+.hoofdlogo {
+    display: flex;
+    justify-content: center;
+    margin-left: 100px;
 }
-
+/*zz*/
 #skiverhuur {
-    font-size: 40px;
-    margin-left: 300px;
+    display: flex;
+    justify-content: center;
 }
 
 

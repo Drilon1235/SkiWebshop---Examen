@@ -16,10 +16,17 @@
     <div class="container-fluid p-0" id="alles">
         <header>
             <div class="BigHeader">
-                <a href="Default.aspx" class="hoofdlogo">
-                    <img src="images/sv_logo.png" id="hoofdlogo" />
-                </a>
-                <h1 id="skiverhuur">Ski Verhuur</h1>
+                <div class="row">
+                    <div class="col-3">
+                        <a href="Default.aspx" class="hoofdlogo">
+                            <img src="images/sv_logo.png" />
+                        </a>
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-7 mt-4">
+                        <h1 id="skiverhuur">Ski Verhuur</h1>
+                    </div>
+                </div>
             </div>
         </header>
 

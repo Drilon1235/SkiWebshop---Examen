@@ -13,7 +13,7 @@ namespace ExamenWebontwikkelingSkiWebshop
         {
             Session.Clear();
             Session.Abandon();
-             Response.Redirect("Default.aspx");
+            Response.Redirect("Default.aspx");
         }
     }
 }

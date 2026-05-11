@@ -11,7 +11,18 @@ namespace ExamenWebontwikkelingSkiWebshop
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string type = Request.QueryString["type"];
+            if (type == "ski")
+            {
+                lblTitel.Text = "Alpineski's huren";
 
+            }
+            else if (type == "langlauf")
+            {
+                lblTitel.Text = "Langlaufmateriaal huren";
+            }
+            ddlType.Items.Add("Alpineski's");
+            ddlType.Items.Add("Langlaufmateriaal");
         }
     }
 }

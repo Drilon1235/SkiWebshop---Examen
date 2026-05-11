@@ -17,8 +17,8 @@
 
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="Huren.aspx">Alpineskiën</a>
-                                <a class="dropdown-item" href="Huren.aspx">LangLaufen</a>
+                                <a class="dropdown-item" id="alpineskiën" href="Huren.aspx?type=ski">Alpineskiën</a>
+                                <a class="dropdown-item" href="Huren.aspx?type=langlauf">LangLaufen</a>
                             </li>
                         </ul>
                     </li>
