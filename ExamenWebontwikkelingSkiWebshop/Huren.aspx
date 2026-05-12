@@ -31,7 +31,7 @@
                     <div>
                         <asp:Label ID="Label3" runat="server" Text="Type materiaal: " CssClass=""></asp:Label>
                     </div>
-                    <asp:DropDownList ID="ddlType" runat="server" CssClass="form-select mt-2 mb-3"></asp:DropDownList>
+                    <asp:DropDownList ID="ddlTypeMateriaal" runat="server" CssClass="form-select mt-2 mb-3"></asp:DropDownList>
 
 
                     <div>
