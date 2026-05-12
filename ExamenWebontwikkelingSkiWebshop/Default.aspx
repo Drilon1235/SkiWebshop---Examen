@@ -34,8 +34,8 @@
                 <img src="images/ski.jpg" class="d-block w-100" alt="Skiën">
 
                 <div class="carousel-caption custom-caption">
-                    <p class="langlaufentekst">LangLaufen</p>
-                    <a class="klikhieromTekst" href="Huren.aspx">Klik hier om je alpine skimateriaal te huren</a>
+                    <p class="langlaufentekst?type=langlauf">LangLaufen</p>
+                    <a class="klikhieromTekst" href="Huren.aspx?type=ski">Klik hier om je alpine skimateriaal te huren</a>
                 </div>
             </div>
 

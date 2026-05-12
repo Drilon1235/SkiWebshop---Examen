@@ -19,48 +19,48 @@
                     <div class="mt-1">
                         <asp:Label ID="Label1" runat="server" Text="Begindatum huren: " CssClass=""></asp:Label>
                     </div>
-                    <asp:TextBox ID="TextBox1" runat="server" TextMode="Date" CssClass="form-control mt-2 mb-2"></asp:TextBox>
+                    <asp:TextBox ID="TextBox1" runat="server" TextMode="Date" CssClass="form-control mt-2 mb-3"></asp:TextBox>
 
 
                     <div>
                         <asp:Label ID="Label2" runat="server" Text="Einddatum huren: " CssClass=""></asp:Label>
                     </div>
-                    <asp:TextBox ID="TextBox2" runat="server" TextMode="Date" CssClass="form-control mt-2 mb-2"></asp:TextBox>
+                    <asp:TextBox ID="TextBox2" runat="server" TextMode="Date" CssClass="form-control mt-2 mb-3"></asp:TextBox>
 
 
                     <div>
                         <asp:Label ID="Label3" runat="server" Text="Type materiaal: " CssClass=""></asp:Label>
                     </div>
-                    <asp:DropDownList ID="ddlType" runat="server" CssClass="form-select mt-2 mb-2"></asp:DropDownList>
+                    <asp:DropDownList ID="ddlType" runat="server" CssClass="form-select mt-2 mb-3"></asp:DropDownList>
 
 
                     <div>
                         <asp:Label ID="Label4" runat="server" Text="Merk: " CssClass=""></asp:Label>
                     </div>
-                    <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-select mt-2 mb-2"></asp:DropDownList>
+                    <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-select mt-2 mb-3"></asp:DropDownList>
 
 
                     <div>
                         <asp:Label ID="Label5" runat="server" Text="Materiaal: " CssClass=""></asp:Label>
                     </div>
-                    <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-select mt-2 mb-2"></asp:DropDownList>
+                    <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-select mt-2 mb-3"></asp:DropDownList>
 
 
                     <div>
                         <asp:Label ID="Label6" runat="server" Text="Maten: " CssClass=""></asp:Label>
                     </div>
-                    <asp:DropDownList ID="DropDownList3" runat="server" CssClass="form-select mt-2 mb-2"></asp:DropDownList>
+                    <asp:DropDownList ID="DropDownList3" runat="server" CssClass="form-select mt-2 mb-3"></asp:DropDownList>
 
 
                     <div>
                         <asp:Label ID="Label7" runat="server" Text="Nog beschikbaar: " CssClass=""></asp:Label>
                     </div>
-                    <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control mt-2 mb-2" Enabled="False"></asp:TextBox>
+                    <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control mt-2 mb-3" Enabled="False"></asp:TextBox>
 
                     <div>
                         <asp:Label ID="Label8" runat="server" Text="Aantal huren: " CssClass=""></asp:Label>
                     </div>
-                    <asp:TextBox ID="TextBox4" runat="server" CssClass="form-control mt-2 mb-2"></asp:TextBox>
+                    <asp:TextBox ID="TextBox4" runat="server" CssClass="form-control mt-2 mb-3"></asp:TextBox>
 
                 </div>
 
