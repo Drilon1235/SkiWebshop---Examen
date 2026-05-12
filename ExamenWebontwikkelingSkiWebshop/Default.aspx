@@ -25,7 +25,7 @@
 
                 <div class="carousel-caption custom-caption">
                     <p class="langlaufentekst">Langlaufen</p>
-                    <a class="klikhieromTekst" href="Huren.aspx?type=langlauf">Klik hier om je langlaufmateriaal te huren</a>
+                    <a class="klikhieromTekst" href="Huren.aspx?type=2">Klik hier om je langlaufmateriaal te huren</a>
                 </div>
             </div>
 
@@ -35,7 +35,7 @@
 
                 <div class="carousel-caption custom-caption">
                     <p class="langlaufentekst">LangLaufen</p>
-                    <a class="klikhieromTekst" href="Huren.aspx?type=ski">Klik hier om je alpine skimateriaal te huren</a>
+                    <a class="klikhieromTekst" href="Huren.aspx?type=1">Klik hier om je alpine skimateriaal te huren</a>
                 </div>
             </div>
 

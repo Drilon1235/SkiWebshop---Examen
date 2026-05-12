@@ -8,6 +8,7 @@ namespace WebShopLogica.DataObjects
 {
     public class TypeSportObject
     {
+        public int Id { get; set; }
         public string Naam { get; set; }
     }
 }

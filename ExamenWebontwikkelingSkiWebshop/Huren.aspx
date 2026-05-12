@@ -31,13 +31,13 @@
                     <div>
                         <asp:Label ID="Label3" runat="server" Text="Type materiaal: " CssClass=""></asp:Label>
                     </div>
-                    <asp:DropDownList ID="ddlTypeMateriaal" runat="server" CssClass="form-select mt-2 mb-3"></asp:DropDownList>
+                    <asp:DropDownList ID="ddlTypeMateriaal" runat="server" CssClass="form-select mt-2 mb-3" AutoPostBack="true" OnSelectedIndexChanged="ddlTypeMateriaal_SelectedIndexChanged"></asp:DropDownList>
 
 
                     <div>
                         <asp:Label ID="Label4" runat="server" Text="Merk: " CssClass=""></asp:Label>
                     </div>
-                    <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-select mt-2 mb-3"></asp:DropDownList>
+                    <asp:DropDownList ID="ddlMerk" runat="server" CssClass="form-select mt-2 mb-3"></asp:DropDownList>
 
 
                     <div>
