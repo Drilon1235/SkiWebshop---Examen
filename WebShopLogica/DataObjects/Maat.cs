@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebShopLogica.DataObjects
 {
-    public class MerkObject
+    public class Maat
     {
         public int Id { get; set; }
         public string Naam { get; set; }

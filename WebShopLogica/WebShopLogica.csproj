@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataObjects\Maat.cs" />
+    <Compile Include="DataObjects\MateriaalMaatObject.cs" />
     <Compile Include="DataObjects\MateriaalObject.cs" />
     <Compile Include="DataObjects\MerkObject.cs" />
     <Compile Include="DataObjects\TypeMateriaalObject.cs" />

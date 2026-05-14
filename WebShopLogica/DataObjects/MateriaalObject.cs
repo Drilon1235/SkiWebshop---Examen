@@ -8,6 +8,7 @@ namespace WebShopLogica.DataObjects
 {
     public class MateriaalObject
     {
+        public int Id { get; set; }
         public string Naam { get; set; }
         public int TypeMateriaalId { get; set; }
         public int MerkId { get; set; }

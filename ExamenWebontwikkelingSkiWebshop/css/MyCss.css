@@ -57,7 +57,11 @@ footer {
 }
 
 nav{
-   border-bottom: 1px solid var(--mainkleur); 
+   border-bottom: 1px solid var(--mainkleur);
+}
+
+.nav-link{
+    color: black;
 }
 
 

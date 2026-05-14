@@ -69,13 +69,13 @@ namespace ExamenWebontwikkelingSkiWebshop
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// TextBox1 control.
+        /// txtBeginDatum control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtBeginDatum;
 
         /// <summary>
         /// Label2 control.
@@ -87,13 +87,13 @@ namespace ExamenWebontwikkelingSkiWebshop
         protected global::System.Web.UI.WebControls.Label Label2;
 
         /// <summary>
-        /// TextBox2 control.
+        /// txtEindDatum control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtEindDatum;
 
         /// <summary>
         /// Label3 control.
@@ -141,13 +141,13 @@ namespace ExamenWebontwikkelingSkiWebshop
         protected global::System.Web.UI.WebControls.Label Label5;
 
         /// <summary>
-        /// DropDownList2 control.
+        /// ddlMateriaal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::System.Web.UI.WebControls.DropDownList ddlMateriaal;
 
         /// <summary>
         /// Label6 control.
@@ -159,13 +159,13 @@ namespace ExamenWebontwikkelingSkiWebshop
         protected global::System.Web.UI.WebControls.Label Label6;
 
         /// <summary>
-        /// DropDownList3 control.
+        /// ddlMaten control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
+        protected global::System.Web.UI.WebControls.DropDownList ddlMaten;
 
         /// <summary>
         /// Label7 control.
@@ -177,13 +177,13 @@ namespace ExamenWebontwikkelingSkiWebshop
         protected global::System.Web.UI.WebControls.Label Label7;
 
         /// <summary>
-        /// TextBox3 control.
+        /// txtMaxAantal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox txtMaxAantal;
 
         /// <summary>
         /// Label8 control.
@@ -195,22 +195,22 @@ namespace ExamenWebontwikkelingSkiWebshop
         protected global::System.Web.UI.WebControls.Label Label8;
 
         /// <summary>
-        /// TextBox4 control.
+        /// txtHuren control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.TextBox txtHuren;
 
         /// <summary>
-        /// Button1 control.
+        /// btnToevoegenAanWinkelMand control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btnToevoegenAanWinkelMand;
 
         /// <summary>
         /// Button2 control.
