@@ -11,6 +11,15 @@
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    
+    <script type="text/javascript">
+        //$(document).ready(function () {
+        //    $("#btnToonWinkelMand").click(function (e) {
+        //        e.preventDefault();
+        //    })
+        //})
+    </script>
+
 </head>
 <body>
     <div class="container-fluid p-0" id="alles">

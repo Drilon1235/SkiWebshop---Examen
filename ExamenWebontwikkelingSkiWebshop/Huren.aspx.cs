@@ -22,7 +22,7 @@ namespace ExamenWebontwikkelingSkiWebshop
             {
                 lblTitel.Text = "Langlaufski's huren";
             }
-            else if(type == null)
+            else if (type == null)
             {
                 Response.Redirect("Default.aspx");
             }
@@ -90,72 +90,81 @@ namespace ExamenWebontwikkelingSkiWebshop
 
             List<Maat> maatList = Materiaal.GetMaat(materiaalId);
 
-            foreach(Maat a in maatList)
+            foreach (Maat a in maatList)
             {
                 ddlMaten.Items.Add(new ListItem(a.Naam, a.Id.ToString()));
             }
         }
 
- 
+
 
 
 
         public void BeginDatum()
         {
-                if (txtBeginDatum.Text == "")
+            if (txtBeginDatum.Text == "")
+            {
+                divFout.Visible = true;
+                lblFoutboodschap.Text = "Je moet een begindatum kiezen.";
+                txtMaxAantal.Text = "";
+                txtHuren.Text = "";
+                return;
+            }
+
+            DateTime nu = DateTime.Now.Date;
+            DateTime begintijd = DateTime.Parse(txtBeginDatum.Text);
+
+            if (begintijd < nu)
+            {
+                divFout.Visible = true;
+                lblFoutboodschap.Text = "Je moet een datum in de toekomst kiezen.";
+                txtBeginDatum.Text = "";
+                return;
+            }
+
+            if (txtEindDatum.Text != "")
+            {
+                DateTime eindtijd = DateTime.Parse(txtEindDatum.Text);
+                if (begintijd > eindtijd)
                 {
-                    divFout.Visible = true;
-                    lblFoutboodschap.Text = "Je moet een begindatum kiezen.";
-                    return;
-                }
-
-                DateTime nu = DateTime.Now.Date;
-                DateTime begintijd = DateTime.Parse(txtBeginDatum.Text);
-
-                if (begintijd < nu)
-                {
-                    divFout.Visible = true;
-                    lblFoutboodschap.Text = "Je moet een datum in de toekomst kiezen.";
-                    txtBeginDatum.Text = "";
-                    return;
-                }
-
-                if(txtEindDatum.Text != "")
-                {
-                    DateTime eindtijd = DateTime.Parse(txtEindDatum.Text);
-                    if (begintijd > eindtijd)
-                    {
-                        txtEindDatum.Text = begintijd.AddDays(1).ToString("yyyy-MM-dd");
-                    }
-                }
-
-
-                if (begintijd >= nu)
-                {
-                    if(txtEindDatum.Text != "")
-                    {
-                        NogBeschikbaar();
-                    }
-                    divFout.Visible = false;
-                    lblFoutboodschap.Text = "";
-                    return;
+                    txtEindDatum.Text = begintijd.AddDays(1).ToString("yyyy-MM-dd");
                 }
             }
-        
+
+
+            if (begintijd >= nu)
+            {
+                if (txtEindDatum.Text != "")
+                {
+                    NogBeschikbaar();
+                }
+                else
+                {
+                    divFout.Visible = false;
+                    lblFoutboodschap.Text = "";
+                }
+
+            }
+        }
+
 
         public void EindDatum()
         {
-            if(txtBeginDatum.Text == "")
+
+            if (txtBeginDatum.Text == "")
             {
                 divFout.Visible = true;
                 lblFoutboodschap.Text = "Je moet eerst een begindatum kiezen.";
                 txtEindDatum.Text = "";
                 return;
             }
-            if(txtEindDatum.Text == "")
+
+            if (txtEindDatum.Text == "")
             {
                 divFout.Visible = true;
                 lblFoutboodschap.Text = "Je moet een einddatum kiezen.";
+                txtHuren.Text = "";
+                txtMaxAantal.Text = "";
                 return;
             }
 
@@ -164,7 +173,7 @@ namespace ExamenWebontwikkelingSkiWebshop
             if (eindtijd < begindatum)
             {
                 divFout.Visible = true;
-                lblFoutboodschap.Text = "Je moet een datum na op op de begindatum kiezen kiezen.";
+                lblFoutboodschap.Text = "Je moet een datum na de begindatum kiezen.";
                 txtEindDatum.Text = "";
                 return;
             }
@@ -200,7 +209,53 @@ namespace ExamenWebontwikkelingSkiWebshop
 
         protected void btnToevoegenAanWinkelMand_Click(object sender, EventArgs e)
         {
-            if()
+            if (txtMaxAantal.Text == "")
+            {
+                divFout.Visible = true;
+                lblFoutboodschap.Text = "Gelieve 2 datums in te vullen.";
+                return;
+            }
+
+            if (txtHuren.Text == "")
+            {
+                divFout.Visible = true;
+                lblFoutboodschap.Text = "Gelieve de hoeveelheid die je wilt huren in te vullen.";
+                return;
+            }
+
+            if (int.TryParse(txtHuren.Text, out int nummer))
+            {
+                int nogbeschikbaar = Convert.ToInt32(txtMaxAantal.Text);
+
+                if (nummer < 1)
+                {
+                    divFout.Visible = true;
+                    lblFoutboodschap.Text = "Je kan niet minder dan 1 hoeveelheid huren. Het is nu op 1 gezet.";
+                    txtHuren.Text = "1";
+                }
+                else if (nummer > nogbeschikbaar)
+                {
+                    divFout.Visible = true;
+                    lblFoutboodschap.Text = "Je kan niet meer dan de beschikbare hoeveelheid huren. Het is nu op het maximale gezet.";
+                    txtHuren.Text = nogbeschikbaar.ToString();
+                }
+                else
+                {
+                    divFout.Visible = false;
+                    lblFoutboodschap.Text = "";
+                    divJuist.Visible = true;
+                    lblJuistboodschap.Text = "Het materiaal is toegevoegd aan de winkelmand.";
+                }
+            }
+            else
+            {
+                divFout.Visible = true;
+                lblFoutboodschap.Text = "Gelieve een geldig nummer in te vullen bij de hoeveelheid die je wilt huren.";
+                txtHuren.Text = "";
+                return;
+            }
+
+
         }
 
         //------------------------------------------------------------------------------------------------------------//
@@ -209,6 +264,9 @@ namespace ExamenWebontwikkelingSkiWebshop
 
         protected void ddlMaten_SelectedIndexChanged(object sender, EventArgs e)
         {
+            divJuist.Visible = false;
+            lblJuistboodschap.Text = "";
+
             if (txtBeginDatum.Text != "" && txtEindDatum.Text != "")
             {
                 NogBeschikbaar();
@@ -218,6 +276,9 @@ namespace ExamenWebontwikkelingSkiWebshop
 
         protected void ddlTypeMateriaal_SelectedIndexChanged(object sender, EventArgs e)
         {
+            divJuist.Visible = false;
+            lblJuistboodschap.Text = "";
+
             VulMerk();
             VulMateriaal();
             VulMatenddl();
@@ -230,6 +291,9 @@ namespace ExamenWebontwikkelingSkiWebshop
 
         protected void ddlMerk_SelectedIndexChanged(object sender, EventArgs e)
         {
+            divJuist.Visible = false;
+            lblJuistboodschap.Text = "";
+
             VulMateriaal();
             VulMatenddl();
 
@@ -241,6 +305,9 @@ namespace ExamenWebontwikkelingSkiWebshop
 
         protected void ddlMateriaal_SelectedIndexChanged(object sender, EventArgs e)
         {
+            divJuist.Visible = false;
+            lblJuistboodschap.Text = "";
+
             VulMatenddl();
 
             if (txtBeginDatum.Text != "" && txtEindDatum.Text != "")
@@ -251,11 +318,15 @@ namespace ExamenWebontwikkelingSkiWebshop
 
         protected void txtBeginDatum_TextChanged(object sender, EventArgs e)
         {
+            divJuist.Visible = false;
+            lblJuistboodschap.Text = "";
             BeginDatum();
         }
 
         protected void txtEindDatum_TextChanged(object sender, EventArgs e)
         {
+            divJuist.Visible = false;
+            lblJuistboodschap.Text = "";
             EindDatum();
         }
     }

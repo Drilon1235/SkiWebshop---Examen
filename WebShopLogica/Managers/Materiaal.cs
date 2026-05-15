@@ -206,7 +206,7 @@ namespace WebShopLogica.Managers
                 " where u.DatumUitlening <= @DatumInlevering " +
                 "And u.DatumInlevering >= @DatumUitlening " +
                 "AND ma.MaatId = @MaatId" +
-                "AND ma.MateriaalId = @MateriaalId";
+                " AND ma.MateriaalId = @MateriaalId";
 
             string constring = ConfigurationManager.ConnectionStrings["Skiverhuur"].ConnectionString;
 

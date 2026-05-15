@@ -73,11 +73,28 @@
                     <div class="col-md-12">
                         <div class="buttonsHuren">
                             <asp:Button ID="btnToevoegenAanWinkelMand" runat="server" Text="Toevoegen aan winkelmand" CssClass="buttonHuren mb-3" OnClick="btnToevoegenAanWinkelMand_Click" />
-                            <asp:Button ID="Button2" runat="server" Text="Toon winkelmand" CssClass="buttonHuren mb-3" />
+                            <button type="button" ID="btnToonWinkelMand" Text="Toon winkelmand" class="buttonHuren mb-3" data-bs-toggle="modal" data-bs-target="#modalForm">Toon Winkemand</button>
                             <asp:Button ID="Button3" runat="server" Text="Huur bevestigen" CssClass="buttonHuren mb-3" />
                         </div>
                     </div>
+                </div>
 
+                <div class="modal fade" id="modalForm" data-backdrop="static">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4>Winkelmand</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" ></button> 
+
+                            </div>
+                            <div class="modal-body">
+
+                            </div>
+                            <div class="modal-footer">
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
