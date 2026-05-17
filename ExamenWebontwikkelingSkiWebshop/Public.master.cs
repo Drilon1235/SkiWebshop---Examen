@@ -11,8 +11,7 @@ namespace ExamenWebontwikkelingSkiWebshop
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session.Clear();
-            Session.Abandon();
+            Session.Remove("Gebruiker");
             //Als je op header logo klikt kom je naar de default pagina en wordt je uitgelogd
         }
     }

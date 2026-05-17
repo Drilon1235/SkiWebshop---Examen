@@ -172,6 +172,9 @@ nav{
     padding: 5px;
 }
 
+.btnModalSluiten{
+    width: 100%;
+}
 /*BEHEER MERKEN PAGINA*/
 .titelBold {
     font-weight: 600;

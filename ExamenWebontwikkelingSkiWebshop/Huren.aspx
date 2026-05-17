@@ -73,25 +73,26 @@
                     <div class="col-md-12">
                         <div class="buttonsHuren">
                             <asp:Button ID="btnToevoegenAanWinkelMand" runat="server" Text="Toevoegen aan winkelmand" CssClass="buttonHuren mb-3" OnClick="btnToevoegenAanWinkelMand_Click" />
-                            <button type="button" ID="btnToonWinkelMand" Text="Toon winkelmand" class="buttonHuren mb-3" data-bs-toggle="modal" data-bs-target="#modalForm">Toon Winkemand</button>
+                            <asp:Button runat="server" id="btnToonWinkelMand" text="Toon winkelmand" class="buttonHuren mb-3" OnClick="btnToonWinkelMand_Click" />
                             <asp:Button ID="Button3" runat="server" Text="Huur bevestigen" CssClass="buttonHuren mb-3" />
                         </div>
                     </div>
                 </div>
 
-                <div class="modal fade" id="modalForm" data-backdrop="static">
-                    <div class="modal-dialog">
+                <div class="modal fade" id="modalForm" data-bs-backdrop="static">
+                    <div class="modal-dialog modal-xl">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h4>Winkelmand</h4>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" ></button> 
-
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
-                            <div class="modal-body">
-
+                            <div class="modal-body mt-4 mb-4 p-0">
+                                <asp:Table ID="TableModal" runat="server" CssClass="table-striped table">
+<%--                                    gevuld met c#--%>
+                                </asp:Table>
                             </div>
                             <div class="modal-footer">
-
+                                <button ID="btnModalSluiten" class="buttonHuren mb-3 btnModalSluiten">Sluiten</button>
                             </div>
                         </div>
                     </div>

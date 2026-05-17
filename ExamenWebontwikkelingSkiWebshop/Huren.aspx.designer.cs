@@ -213,6 +213,15 @@ namespace ExamenWebontwikkelingSkiWebshop
         protected global::System.Web.UI.WebControls.Button btnToevoegenAanWinkelMand;
 
         /// <summary>
+        /// btnToonWinkelMand control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnToonWinkelMand;
+
+        /// <summary>
         /// Button3 control.
         /// </summary>
         /// <remarks>
@@ -220,5 +229,14 @@ namespace ExamenWebontwikkelingSkiWebshop
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button3;
+
+        /// <summary>
+        /// TableModal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table TableModal;
     }
 }

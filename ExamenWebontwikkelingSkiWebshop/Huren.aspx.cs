@@ -239,12 +239,36 @@ namespace ExamenWebontwikkelingSkiWebshop
                     lblFoutboodschap.Text = "Je kan niet meer dan de beschikbare hoeveelheid huren. Het is nu op het maximale gezet.";
                     txtHuren.Text = nogbeschikbaar.ToString();
                 }
-                else
+                else //AI
                 {
                     divFout.Visible = false;
                     lblFoutboodschap.Text = "";
+                    WinkelmandItems item = new WinkelmandItems
+                    {
+                        Merk = ddlMerk.SelectedItem.Text,
+                        Materiaal = ddlMateriaal.SelectedItem.Text,
+                        Aantal = Convert.ToInt32(txtHuren.Text),
+                        Beginperiode = txtBeginDatum.Text,
+                        Eindperiode = txtEindDatum.Text
+                    };
+
+                    List<WinkelmandItems> winkelmand;
+
+                    if (Session["Winkelmand"] != null)
+                    {
+                        winkelmand = (List<WinkelmandItems>)Session["Winkelmand"];
+                    }
+                    else
+                    {
+                        winkelmand = new List<WinkelmandItems>();
+                    }
+
+                    winkelmand.Add(item);
+
+                    Session["Winkelmand"] = winkelmand;
+
                     divJuist.Visible = true;
-                    lblJuistboodschap.Text = "Het materiaal is toegevoegd aan de winkelmand.";
+                    lblJuistboodschap.Text = "Toegevoegd aan winkelmand!";
                 }
             }
             else
@@ -254,6 +278,39 @@ namespace ExamenWebontwikkelingSkiWebshop
                 txtHuren.Text = "";
                 return;
             }
+        }
+
+        public void ToonEnVulWinkelMand() //AI
+        {
+            TableModal.Rows.Clear();
+
+            if (Session["Winkelmand"] == null)
+            {
+                return;
+            }
+
+            List<WinkelmandItems> winkelmand = (List<WinkelmandItems>)Session["Winkelmand"];
+
+
+            foreach (WinkelmandItems item in winkelmand)
+            {
+                TableRow rij = new TableRow();
+
+                rij.Cells.Add(new TableCell { Text = item.Merk + " - " + item.Materiaal });
+                rij.Cells[0].Style["padding-bottom"] = "0px";
+                rij.Cells[0].Style["padding-top"] = "0px";
+                rij.Cells.Add(new TableCell { Text = "Aantal: " + item.Aantal.ToString() });
+                rij.Cells[1].Style["padding-bottom"] = "0px";
+                rij.Cells[1].Style["padding-top"] = "0px";
+                rij.Cells.Add(new TableCell { Text = "Periode: " + item.Beginperiode + " tot " + item.Eindperiode });
+                rij.Cells[2].Style["padding-bottom"] = "0px";
+                rij.Cells[2].Style["padding-top"] = "0px";
+
+
+                TableModal.Rows.Add(rij);
+            }
+
+
 
 
         }
@@ -328,6 +385,19 @@ namespace ExamenWebontwikkelingSkiWebshop
             divJuist.Visible = false;
             lblJuistboodschap.Text = "";
             EindDatum();
+        }
+
+        protected void btnToonWinkelMand_Click(object sender, EventArgs e) //AI
+        {
+            ToonEnVulWinkelMand();
+
+            ScriptManager.RegisterStartupScript(
+            this,
+            this.GetType(),
+            "showModal",
+            "var modal = new bootstrap.Modal(document.getElementById('modalForm')); modal.show();",
+            true
+            );
         }
     }
 }
