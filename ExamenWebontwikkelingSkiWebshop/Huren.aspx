@@ -116,20 +116,24 @@
                                     <div class="mb-2 mt-4">
                                         <asp:Label ID="Label9" runat="server" Text="Voornaam: " CssClass=""></asp:Label>
                                     </div>
-                                    <asp:TextBox ID="txtVoornaam" runat="server" CssClass="form-control mb-4" Required="required"></asp:TextBox>
+                                    <asp:TextBox ID="txtVoornaam" runat="server" CssClass="form-control mb-4"></asp:TextBox>
                                     <div class="mb-2">
                                         <asp:Label ID="Label10" runat="server" Text="Achternaam: "></asp:Label>
                                     </div>
-                                    <asp:TextBox ID="txtAchternaam" runat="server" CssClass="form-control mb-4" Required="required"></asp:TextBox>
+                                    <asp:TextBox ID="txtAchternaam" runat="server" CssClass="form-control mb-4"></asp:TextBox>
                                     <div class="mb-2">
                                         <asp:Label ID="Label11" runat="server" Text="E-mail: "></asp:Label>
                                     </div>
-                                    <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" Required="required"></asp:TextBox>
+                                    <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" TextMode="Email"></asp:TextBox>
+
+                                    <div class="alert alert-warning mt-4" id="divModalFout" runat="server">
+                                        <asp:Label ID="lblModal" runat="server" Text=""></asp:Label>
+                                    </div>
                                 </div>
 
                             </div>
                             <div class="modal-footer">
-                                <button id="btnModalSluitenBevestigen" class="buttonHuren m-2 btnModalSluiten">Bestelling plaatsen</button>
+                                    <asp:Button ID="btnModalSluitenBevestigen" CssClass="buttonHuren btnModalSluiten" runat="server" Text="Huur Bevestigen" OnClick="btnModalSluitenBevestigen_Click" />
                             </div>
                         </div>
                     </div>

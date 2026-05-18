@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebShopLogica.DataObjects;
 using WebShopLogica.Managers;
+using System.Net;
+using System.Net.Mail;
 
 namespace ExamenWebontwikkelingSkiWebshop
 {
@@ -28,11 +30,11 @@ namespace ExamenWebontwikkelingSkiWebshop
             }
 
 
-
             if (!IsPostBack)
             {
                 divFout.Visible = false;
                 divJuist.Visible = false;
+                divModalFout.Visible = false;
                 VulTypeMateriaal();
                 VulMerk();
                 VulMateriaal();
@@ -189,27 +191,39 @@ namespace ExamenWebontwikkelingSkiWebshop
 
         public void NogBeschikbaar()
         {
+            int maxaantal = 0;
+            int gehuurdaantal = 0;
+            int winkelmandAantal = 0;
+
+            DateTime begindatum = DateTime.Parse(txtBeginDatum.Text);
+            DateTime einddatum = DateTime.Parse(txtEindDatum.Text);
+
+            int materiaalId = Convert.ToInt32(ddlMateriaal.SelectedValue);
+            int maatId = Convert.ToInt32(ddlMaten.SelectedValue);
+
+            maxaantal = Materiaal.MaximumHoeveelheidMateriaal(materiaalId, maatId);
+            gehuurdaantal = Materiaal.VerhuurdMateriaal(begindatum, einddatum, maatId, materiaalId);
+
             if (Session["Winkelmand"] != null)
             {
                 List<WinkelmandItems> winkelmand = (List<WinkelmandItems>)Session["Winkelmand"];
-                foreach(WinkelmandItems item in winkelmand)
+
+                foreach (WinkelmandItems item in winkelmand)
                 {
-                    int aantalgehuurd = item.Aantal;
+
+
+                    bool zelfdeMateriaal = item.MateriaalId == materiaalId;
+                    bool zelfdeMaat = item.MaatId == maatId;
+                    bool overlapt = item.Beginperiode <= einddatum && item.Eindperiode >= begindatum;
+
+                    if (zelfdeMateriaal && zelfdeMaat && overlapt)
+                    {
+                        winkelmandAantal += item.Aantal;
+                    }
                 }
             }
-            int maxaantal = 0;
-            int gehuurdaantal = 0;
-            DateTime begindatum = DateTime.Parse(txtBeginDatum.Text);
-            DateTime einddatum = DateTime.Parse(txtEindDatum.Text);
-            int materiaalId = Convert.ToInt32(ddlMateriaal.SelectedValue);
-            int maatId = Convert.ToInt32(ddlMaten.SelectedValue);
-            maxaantal = Materiaal.MaximumHoeveelheidMateriaal(materiaalId, maatId);
 
-            gehuurdaantal = Materiaal.VerhuurdMateriaal(begindatum, einddatum, maatId, materiaalId);
-
-            int resultaat = maxaantal - gehuurdaantal;
-
-
+            int resultaat = maxaantal - gehuurdaantal - winkelmandAantal;
 
             txtMaxAantal.Text = resultaat.ToString();
         }
@@ -257,8 +271,12 @@ namespace ExamenWebontwikkelingSkiWebshop
                         Materiaal = ddlMateriaal.SelectedItem.Text,
                         Maat = Convert.ToInt32(ddlMaten.SelectedItem.Text),
                         Aantal = Convert.ToInt32(txtHuren.Text),
-                        Beginperiode = txtBeginDatum.Text,
-                        Eindperiode = txtEindDatum.Text
+                        Beginperiode = Convert.ToDateTime(txtBeginDatum.Text),
+                        Eindperiode = Convert.ToDateTime(txtEindDatum.Text),
+                        MateriaalId = Convert.ToInt32(ddlMateriaal.SelectedValue),
+                        MaatId = Convert.ToInt32(ddlMaten.SelectedValue)
+
+
                     };
 
                     List<WinkelmandItems> winkelmand;
@@ -275,6 +293,7 @@ namespace ExamenWebontwikkelingSkiWebshop
                     winkelmand.Add(item);
 
                     Session["Winkelmand"] = winkelmand;
+                    NogBeschikbaar();
 
                     divJuist.Visible = true;
                     lblJuistboodschap.Text = "Toegevoegd aan winkelmand!";
@@ -291,7 +310,7 @@ namespace ExamenWebontwikkelingSkiWebshop
 
         public void ToonWinkelMand() //AI
         {
-            
+
 
             if (Session["Winkelmand"] == null)
             {
@@ -318,7 +337,7 @@ namespace ExamenWebontwikkelingSkiWebshop
                 rijModal1.Cells[1].Style["padding-right"] = "100px";
                 rijModal1.Cells[1].Style["border"] = "none";
 
-                rijModal1.Cells.Add(new TableCell { Text = "Periode: " + item.Beginperiode + " tot " + item.Eindperiode });
+                rijModal1.Cells.Add(new TableCell { Text = "Periode: " + item.Beginperiode.ToString("dd/MM/yyyy") + " tot " + item.Eindperiode.ToString("dd/MM/yyyy") });
                 rijModal1.Cells[2].Style["padding-bottom"] = "0px";
                 rijModal1.Cells[2].Style["padding-top"] = "0px";
                 rijModal1.Cells[2].Style["border"] = "none";
@@ -337,7 +356,7 @@ namespace ExamenWebontwikkelingSkiWebshop
                 rijModal2.Cells[1].Style["padding-right"] = "100px";
                 rijModal2.Cells[1].Style["border"] = "none";
 
-                rijModal2.Cells.Add(new TableCell { Text = "Periode: " + item.Beginperiode + " tot " + item.Eindperiode });
+                rijModal2.Cells.Add(new TableCell { Text = "Periode: " + item.Beginperiode.ToString("dd/MM/yyyy") + " tot " + item.Eindperiode.ToString("dd/MM/yyyy") });
                 rijModal2.Cells[2].Style["padding-bottom"] = "0px";
                 rijModal2.Cells[2].Style["padding-top"] = "0px";
                 rijModal2.Cells[2].Style["border"] = "none";
@@ -439,7 +458,7 @@ namespace ExamenWebontwikkelingSkiWebshop
             );
         }
 
-        protected void Button3_Click(object sender, EventArgs e)
+        protected void Button3_Click(object sender, EventArgs e) //modalform voor bevestigen
         {
 
             ToonWinkelMand();
@@ -450,6 +469,115 @@ namespace ExamenWebontwikkelingSkiWebshop
             "showModal",
             "var modal = new bootstrap.Modal(document.getElementById('modalFormBevestigen')); modal.show();",
             true
+            );
+        }
+
+        protected void btnModalSluitenBevestigen_Click(object sender, EventArgs e)
+        {
+            divModalFout.Visible = false;
+            lblModal.Text = "";
+
+            if (txtVoornaam.Text == "" || txtAchternaam.Text == "" || txtEmail.Text == "")
+            {
+                divModalFout.Visible = true;
+                lblModal.Text = "Gelieve alle velden in te vullen.";
+                OpenBevestigModal();
+                return;
+            }
+            if (Session["Skiverhuur"] == null)
+            {
+                divModalFout.Visible = true;
+                lblModal.Text = "Gelieve iets in de winkelmand te steken.";
+                OpenBevestigModal();
+                return;
+            }
+            divModalFout.Visible = false;
+            lblModal.Text = "";
+            string voornaam = txtVoornaam.Text;
+            string achternaam = txtAchternaam.Text;
+            string email = txtEmail.Text;
+
+            List<WinkelmandItems> winkelmand = (List<WinkelmandItems>)Session["Winkelmand"];
+
+            if (KlantManager.ControleerKlant(voornaam, achternaam, email))
+            {
+                //klant bestaat
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress("zenunidrilon@gmail.com");
+                mail.To.Add(txtEmail.Text);
+                mail.Subject = "Bestelling skiverhuur bevestigd";
+                mail.Body = "Uw bestelling van volgende materialen is bevestigd: ";
+
+                int klantid = KlantManager.GetKlantMetGegevens(voornaam, achternaam, email);
+                foreach (WinkelmandItems item in winkelmand)
+                {
+                    int uitleningid = Materiaal.VoegUitleningToe(item.Beginperiode, item.Eindperiode, klantid);
+                    int materiaalmaatid = Materiaal.GetMateriaalMaatId(item.MateriaalId, item.MaatId);
+                    Materiaal.VoegUitLeningMateriaalToe(uitleningid, materiaalmaatid, item.Aantal);
+                    mail.Body += "\n"; 
+                    mail.Body += item.Merk + " - " + item.Materiaal + " (" + item.Maat + ") ";
+                    mail.Body += "\n";
+                    mail.Body += "Aantal: " + item.Aantal;
+                    mail.Body += "\n";
+                    mail.Body += "Periode: " + item.Beginperiode.ToString("dd/MM/yyyy") + " tot " + item.Eindperiode.ToString("dd/MM/yyyy");
+                }
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+                smtp.Credentials = new NetworkCredential(
+                "zenunidrilon@gmail.com",
+                "efkb eqfq debc ddlw"
+                );
+                smtp.EnableSsl = true;
+                smtp.Send(mail);
+                divJuist.Visible = true;
+                lblJuistboodschap.Text = "De huur is bevestigd.";
+                Session.Remove("Winkelmand");
+            }
+            else
+            {
+                //nieuwe klant aanmaken
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress("zenunidrilon@gmail.com");
+                mail.To.Add(txtEmail.Text);
+                mail.Subject = "Bestelling skiverhuur bevestigd";
+                mail.Body = "Uw bestelling van volgende materialen is bevestigd: ";
+
+                KlantManager.MaakKlant(voornaam, achternaam, email);
+
+                int klantid = KlantManager.GetKlantMetGegevens(voornaam, achternaam, email);
+                foreach (WinkelmandItems item in winkelmand)
+                {
+                    int uitleningid = Materiaal.VoegUitleningToe(item.Beginperiode, item.Eindperiode, klantid);
+                    int materiaalmaatid = Materiaal.GetMateriaalMaatId(item.MateriaalId, item.MaatId);
+                    Materiaal.VoegUitLeningMateriaalToe(uitleningid, materiaalmaatid, item.Aantal);
+                    mail.Body += "\n";
+                    mail.Body += item.Merk + " - " + item.Materiaal + " (" + item.Maat + ") ";
+                    mail.Body += "\n";
+                    mail.Body += "Aantal: " + item.Aantal;
+                    mail.Body += "\n";
+                    mail.Body += "Periode: " + item.Beginperiode.ToString("dd/MM/yyyy") + " tot " + item.Eindperiode.ToString("dd/MM/yyyy");
+                }
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+                smtp.Credentials = new NetworkCredential(
+                "zenunidrilon@gmail.com",
+                "efkb eqfq debc ddlw"
+                );
+                smtp.EnableSsl = true;
+                smtp.Send(mail);
+                divJuist.Visible = true;
+                lblJuistboodschap.Text = "De huur is bevestigd.";
+                Session.Remove("Winkelmand");
+            }
+        }
+        public void OpenBevestigModal()
+        {
+            ToonWinkelMand();
+
+            ScriptManager.RegisterStartupScript(
+                this,
+                this.GetType(),
+                "showModalBevestigen",
+                "var modal = new bootstrap.Modal(document.getElementById('modalFormBevestigen')); modal.show();",
+                true
             );
         }
     }

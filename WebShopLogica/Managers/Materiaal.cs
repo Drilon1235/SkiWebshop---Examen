@@ -177,10 +177,10 @@ namespace WebShopLogica.Managers
             int hoeveelheid = 0;
             string constring = ConfigurationManager.ConnectionStrings["Skiverhuur"].ConnectionString;
 
-            using(SqlConnection sqlco = new SqlConnection(constring))
+            using (SqlConnection sqlco = new SqlConnection(constring))
             {
                 sqlco.Open();
-                using (SqlCommand sqlcmd = new SqlCommand(query, sqlco)) 
+                using (SqlCommand sqlcmd = new SqlCommand(query, sqlco))
                 {
                     sqlcmd.Parameters.AddWithValue("@MateriaalId", materiaalId);
                     sqlcmd.Parameters.AddWithValue("@MaatId", maatId);
@@ -212,10 +212,10 @@ namespace WebShopLogica.Managers
 
             int hoeveelheid = 0;
 
-            using(SqlConnection sqlco = new SqlConnection(constring))
+            using (SqlConnection sqlco = new SqlConnection(constring))
             {
                 sqlco.Open();
-                using(SqlCommand sqlcmd = new SqlCommand(query, sqlco))
+                using (SqlCommand sqlcmd = new SqlCommand(query, sqlco))
                 {
                     sqlcmd.Parameters.AddWithValue("@DatumUitlening", datumuitlening);
                     sqlcmd.Parameters.AddWithValue("@DatumInlevering", datuminlevering);
@@ -232,6 +232,73 @@ namespace WebShopLogica.Managers
                 }
             }
             return hoeveelheid;
+        }
+
+        public static int VoegUitleningToe(DateTime uitlening, DateTime inlevering, int klantId)
+        {
+            string query = "Insert Into Uitlening (DatumUitlening, DatumInlevering, KlantId) Values (@Uitlening, @Inlevering, @KlantId)" +
+                " Select SCOPE_IDENTITY();";
+            ;
+            string constring = ConfigurationManager.ConnectionStrings["Skiverhuur"].ConnectionString;
+            int uitleningid = 0;
+
+            using (SqlConnection sqlco = new SqlConnection(constring))
+            {
+                sqlco.Open();
+                using (SqlCommand sqlcmd = new SqlCommand(query, sqlco))
+                {
+                    sqlcmd.Parameters.AddWithValue("@Uitlening", uitlening);
+                    sqlcmd.Parameters.AddWithValue("@Inlevering", inlevering);
+                    sqlcmd.Parameters.AddWithValue("@KlantId", klantId);
+
+                    uitleningid = Convert.ToInt32(sqlcmd.ExecuteScalar());
+                    return uitleningid;
+                }
+            }
+        }
+
+        public static void VoegUitLeningMateriaalToe(int uitleningid, int MateriaalMaatid, int aantal)
+        {
+            string query = "Insert Into UitleningMateriaal (UitleningId, MateriaalMaatId, Aantal) Values(@UitleningId, @MateriaalMaatId, @Aantal)";
+
+            string constring = ConfigurationManager.ConnectionStrings["Skiverhuur"].ConnectionString;
+
+            using (SqlConnection sqlco = new SqlConnection(constring))
+            {
+                sqlco.Open();
+                using (SqlCommand sqlcmd = new SqlCommand(query, sqlco))
+                {
+                    sqlcmd.Parameters.AddWithValue("@UitleningId", uitleningid);
+                    sqlcmd.Parameters.AddWithValue("@MateriaalMaatId", MateriaalMaatid);
+                    sqlcmd.Parameters.AddWithValue("@Aantal", aantal);
+
+                    sqlcmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static int GetMateriaalMaatId(int materiaalid, int maatid)
+        {
+            string query = "select MateriaalMaatId from UitleningMateriaal ui" +
+                " inner join MateriaalMaat m on m.Id = ui.MateriaalMaatId" +
+                " where MateriaalId = @MateriaalId and MaatId = @MaatId";
+            string constring = ConfigurationManager.ConnectionStrings["Skiverhuur"].ConnectionString;
+
+
+            using (SqlConnection sqlco = new SqlConnection(constring))
+            {
+                sqlco.Open();
+
+                using (SqlCommand sqlcmd = new SqlCommand(query, sqlco))
+                {
+                    sqlcmd.Parameters.AddWithValue("@MateriaalId", materiaalid);
+                    sqlcmd.Parameters.AddWithValue("@MaatId", maatid);
+
+                    object result = sqlcmd.ExecuteScalar();
+
+                    return Convert.ToInt32(result);
+                }
+            }
         }
     }
 }
