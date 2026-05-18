@@ -10,8 +10,10 @@ namespace WebShopLogica.DataObjects
     {
         public string Merk { get; set; }
         public string Materiaal { get; set; }
+        public int Maat { get; set; }
         public int Aantal { get; set; }
         public string Beginperiode { get; set; }
         public string Eindperiode { get; set; }
+        
     }
 }

@@ -189,6 +189,14 @@ namespace ExamenWebontwikkelingSkiWebshop
 
         public void NogBeschikbaar()
         {
+            if (Session["Winkelmand"] != null)
+            {
+                List<WinkelmandItems> winkelmand = (List<WinkelmandItems>)Session["Winkelmand"];
+                foreach(WinkelmandItems item in winkelmand)
+                {
+                    int aantalgehuurd = item.Aantal;
+                }
+            }
             int maxaantal = 0;
             int gehuurdaantal = 0;
             DateTime begindatum = DateTime.Parse(txtBeginDatum.Text);
@@ -247,6 +255,7 @@ namespace ExamenWebontwikkelingSkiWebshop
                     {
                         Merk = ddlMerk.SelectedItem.Text,
                         Materiaal = ddlMateriaal.SelectedItem.Text,
+                        Maat = Convert.ToInt32(ddlMaten.SelectedItem.Text),
                         Aantal = Convert.ToInt32(txtHuren.Text),
                         Beginperiode = txtBeginDatum.Text,
                         Eindperiode = txtEindDatum.Text
@@ -280,9 +289,9 @@ namespace ExamenWebontwikkelingSkiWebshop
             }
         }
 
-        public void ToonEnVulWinkelMand() //AI
+        public void ToonWinkelMand() //AI
         {
-            TableModal.Rows.Clear();
+            
 
             if (Session["Winkelmand"] == null)
             {
@@ -294,20 +303,50 @@ namespace ExamenWebontwikkelingSkiWebshop
 
             foreach (WinkelmandItems item in winkelmand)
             {
-                TableRow rij = new TableRow();
+                TableRow rijModal1 = new TableRow();
+                TableRow rijModal2 = new TableRow();
 
-                rij.Cells.Add(new TableCell { Text = item.Merk + " - " + item.Materiaal });
-                rij.Cells[0].Style["padding-bottom"] = "0px";
-                rij.Cells[0].Style["padding-top"] = "0px";
-                rij.Cells.Add(new TableCell { Text = "Aantal: " + item.Aantal.ToString() });
-                rij.Cells[1].Style["padding-bottom"] = "0px";
-                rij.Cells[1].Style["padding-top"] = "0px";
-                rij.Cells.Add(new TableCell { Text = "Periode: " + item.Beginperiode + " tot " + item.Eindperiode });
-                rij.Cells[2].Style["padding-bottom"] = "0px";
-                rij.Cells[2].Style["padding-top"] = "0px";
+                rijModal1.Cells.Add(new TableCell { Text = item.Merk + " - " + item.Materiaal + " (" + item.Maat + ")" });
+                rijModal1.Cells[0].Style["padding-bottom"] = "0px";
+                rijModal1.Cells[0].Style["padding-top"] = "0px";
+                rijModal1.Cells[0].Style["border"] = "none";
+                rijModal1.Cells[0].Style["padding-left"] = "18px";
+
+                rijModal1.Cells.Add(new TableCell { Text = "Aantal: " + item.Aantal.ToString() });
+                rijModal1.Cells[1].Style["padding-bottom"] = "0px";
+                rijModal1.Cells[1].Style["padding-top"] = "0px";
+                rijModal1.Cells[1].Style["padding-right"] = "100px";
+                rijModal1.Cells[1].Style["border"] = "none";
+
+                rijModal1.Cells.Add(new TableCell { Text = "Periode: " + item.Beginperiode + " tot " + item.Eindperiode });
+                rijModal1.Cells[2].Style["padding-bottom"] = "0px";
+                rijModal1.Cells[2].Style["padding-top"] = "0px";
+                rijModal1.Cells[2].Style["border"] = "none";
 
 
-                TableModal.Rows.Add(rij);
+                rijModal2.Cells.Add(new TableCell { Text = item.Merk + " - " + item.Materiaal + " (" + item.Maat + ")" });
+                rijModal2.Cells[0].Style["padding-bottom"] = "0px";
+                rijModal2.Cells[0].Style["padding-top"] = "0px";
+                rijModal2.Cells[0].Style["border"] = "none";
+                rijModal2.Cells[0].Style["padding-left"] = "18px";
+
+
+                rijModal2.Cells.Add(new TableCell { Text = "Aantal: " + item.Aantal.ToString() });
+                rijModal2.Cells[1].Style["padding-bottom"] = "0px";
+                rijModal2.Cells[1].Style["padding-top"] = "0px";
+                rijModal2.Cells[1].Style["padding-right"] = "100px";
+                rijModal2.Cells[1].Style["border"] = "none";
+
+                rijModal2.Cells.Add(new TableCell { Text = "Periode: " + item.Beginperiode + " tot " + item.Eindperiode });
+                rijModal2.Cells[2].Style["padding-bottom"] = "0px";
+                rijModal2.Cells[2].Style["padding-top"] = "0px";
+                rijModal2.Cells[2].Style["border"] = "none";
+
+
+
+
+                TableModal.Rows.Add(rijModal1);
+                TableBevestigenModal.Rows.Add(rijModal2);
             }
 
 
@@ -389,13 +428,27 @@ namespace ExamenWebontwikkelingSkiWebshop
 
         protected void btnToonWinkelMand_Click(object sender, EventArgs e) //AI
         {
-            ToonEnVulWinkelMand();
+            ToonWinkelMand();
 
             ScriptManager.RegisterStartupScript(
             this,
             this.GetType(),
             "showModal",
             "var modal = new bootstrap.Modal(document.getElementById('modalForm')); modal.show();",
+            true
+            );
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+
+            ToonWinkelMand();
+
+            ScriptManager.RegisterStartupScript(
+            this,
+            this.GetType(),
+            "showModal",
+            "var modal = new bootstrap.Modal(document.getElementById('modalFormBevestigen')); modal.show();",
             true
             );
         }

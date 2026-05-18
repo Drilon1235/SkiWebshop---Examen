@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataObjects\Klant.cs" />
     <Compile Include="DataObjects\Maat.cs" />
     <Compile Include="DataObjects\MateriaalMaatObject.cs" />
     <Compile Include="DataObjects\MateriaalObject.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="DataObjects\WinkelmandItems.cs" />
     <Compile Include="Managers\AanmeldenManager.cs" />
     <Compile Include="DataObjects\AanmeldenObject.cs" />
+    <Compile Include="Managers\KlantManager.cs" />
     <Compile Include="Managers\Materiaal.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
